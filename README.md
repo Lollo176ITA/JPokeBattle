@@ -1,4 +1,3 @@
-Qui sotto troverai un esempio di come potrebbe essere strutturato il README per il tuo progetto JPokeBattle:
 
 ---
 
