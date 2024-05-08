@@ -1,1 +1,1 @@
-per ora vuoto 
+per ora vuoto ora no
