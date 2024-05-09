@@ -1,59 +1,83 @@
 package main.java.com.jpokebattle;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("JPokeBattle");
+        // Root layout
+        BorderPane root = new BorderPane();
+        root.setPadding(new Insets(10));
 
-        VBox root = new VBox(20);
-        root.setAlignment(Pos.CENTER);
+        // Player and opponent info
+        VBox playerInfo = new VBox(10);
+        playerInfo.setAlignment(Pos.CENTER_LEFT);
+        Label playerName = new Label("Lollo176ITA");
+        playerName.setFont(new Font("Arial", 20));
+        playerInfo.getChildren().add(playerName);
 
-        // Immagini dei Pokémon
-        Image pokemonImage1 = new Image("file:src/main/resources/images/pokemon1.png");
-        ImageView pokemonView1 = new ImageView(pokemonImage1);
-        pokemonView1.setFitHeight(100);
-        pokemonView1.setFitWidth(100);
+        VBox opponentInfo = new VBox(10);
+        opponentInfo.setAlignment(Pos.CENTER_RIGHT);
+        Label opponentName = new Label("B3EaNN");
+        opponentName.setFont(new Font("Arial", 20));
+        opponentInfo.getChildren().add(opponentName);
 
-        Image pokemonImage2 = new Image("file:src/main/resources/images/pokemon2.png");
-        ImageView pokemonView2 = new ImageView(pokemonImage2);
-        pokemonView2.setFitHeight(100);
-        pokemonView2.setFitWidth(100);
+        root.setLeft(playerInfo);
+        root.setRight(opponentInfo);
 
-        // Barre della vita
-        ProgressBar healthBar1 = new ProgressBar(0.75);
-        healthBar1.setPrefWidth(200);
-        ProgressBar healthBar2 = new ProgressBar(0.50);
-        healthBar2.setPrefWidth(200);
+        // Main battle area
+        GridPane battleArea = new GridPane();
+        battleArea.setAlignment(Pos.CENTER);
+        battleArea.setHgap(50);
 
-        // Layout per i Pokémon e le loro barre della vita
-        HBox pokemonBox1 = new HBox(10, pokemonView1, healthBar1);
-        pokemonBox1.setAlignment(Pos.CENTER);
-        HBox pokemonBox2 = new HBox(10, pokemonView2, healthBar2);
-        pokemonBox2.setAlignment(Pos.CENTER);
+        // Solgaleo Image
+        Image solgaleoImage = new Image("file:src/main/resources/images/pokemon2.png"); // Adjust the file path as needed
+        ImageView solgaleoView = new ImageView(solgaleoImage);
+        solgaleoView.setFitHeight(200);
+        solgaleoView.setFitWidth(200);
+        Label solgaleoLabel = new Label("Solgaleo L74\nHP: 325/325", solgaleoView);
+        solgaleoLabel.setContentDisplay(ContentDisplay.TOP);
 
-        // Pulsanti per le mosse (placeholders)
-        Button move1 = new Button("Mossa 1");
-        Button move2 = new Button("Mossa 2");
-        Button move3 = new Button("Mossa 3");
-        Button move4 = new Button("Mossa 4");
+        // Typhlosion Image
+        Image typhlosionImage = new Image("file:src/main/resources/images/pokemon1.png"); // Adjust the file path as needed
+        ImageView typhlosionView = new ImageView(typhlosionImage);
+        typhlosionView.setFitHeight(200);
+        typhlosionView.setFitWidth(200);
+        Label typhlosionLabel = new Label("Typhlosion L84\nHP: 100%", typhlosionView);
+        typhlosionLabel.setContentDisplay(ContentDisplay.TOP);
 
-        VBox movesBox = new VBox(10, move1, move2, move3, move4);
-        movesBox.setAlignment(Pos.CENTER);
+        battleArea.add(solgaleoLabel, 0, 0);
+        battleArea.add(typhlosionLabel, 1, 0);
 
-        root.getChildren().addAll(pokemonBox1, pokemonBox2, movesBox);
+        root.setCenter(battleArea);
 
-        Scene scene = new Scene(root, 400, 400);
+        // Action buttons
+        HBox actionButtons = new HBox(10);
+        actionButtons.setAlignment(Pos.CENTER);
+        Button attackButton = new Button("Attack");
+        Button switchButton = new Button("Switch");
+
+        actionButtons.getChildren().addAll(attackButton, switchButton);
+
+        root.setBottom(actionButtons);
+
+        // Scene setup
+        Scene scene = new Scene(root, 800, 600);
+        primaryStage.setTitle("Pokémon Battle UI");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -62,3 +86,5 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+
