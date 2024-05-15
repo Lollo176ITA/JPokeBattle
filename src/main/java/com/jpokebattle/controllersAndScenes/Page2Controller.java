@@ -9,10 +9,14 @@ public class Page2Controller {
     private Label nameLabel;
 
     @FXML
+    private Label trainerLabel;
+
+    @FXML
     private Label pokeballLabel;
 
-    public void setNameAndPokeball(String name, String pokeball) {
+    public void setNameAndPokeball(String name, String trainer, String pokeball) {
         nameLabel.setText("Nome: " + name);
+        trainerLabel.setText("Genere: " + trainer);
         pokeballLabel.setText("Pokéball Preferita: " + pokeball);
     }
 }
