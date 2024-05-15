@@ -49,6 +49,7 @@ public class SchermataSelezioneController {
     private void initialize() {
         selectedTrainer = null;
         selectedPokeball = null;
+
     }
 
     @FXML
@@ -70,6 +71,7 @@ public class SchermataSelezioneController {
     }
 
     @FXML
+    //
     private void handleButtonClick(ActionEvent event) {
         String name = nameField.getText();
 
@@ -99,6 +101,8 @@ public class SchermataSelezioneController {
             e.printStackTrace();
         }
     }
+
+
 
     private String getPokeballName(ImageView pokeball) {
         if (pokeball == pokeball1) {
