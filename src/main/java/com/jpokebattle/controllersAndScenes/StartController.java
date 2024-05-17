@@ -107,14 +107,14 @@ public class StartController {
     // The following methods are used to handle the progress bar
     private void startProgressBar() {
         progressBarTimeline = new Timeline(
-                new KeyFrame(Duration.seconds(0.005), e -> updateProgress())
+                new KeyFrame(Duration.seconds(0.005), e -> updateProgress()) // Update progress every 0.005 seconds (200 times per second) to make the progress bar look smooth
         );
         progressBarTimeline.setCycleCount(Timeline.INDEFINITE);
         progressBarTimeline.play();
     }
 
     private void updateProgress() {
-        progress += random.nextDouble() * 0.003;
+        progress += random.nextDouble() * 0.003; // Randomly increment progress to simulate loading time  (0.003 is a random value)
         if (progress >= 1) {
             progressBarTimeline.stop();
             progress = 1;
@@ -141,7 +141,6 @@ public class StartController {
     @FXML
     private void handleCreatedByMouseEntered() {
         DropShadow shadow = new DropShadow(15,Color.WHITE);
-
         createdBy.setEffect(shadow);
     }
     @FXML
@@ -152,13 +151,13 @@ public class StartController {
     @FXML
     private void handleCreatedBy() throws IOException, URISyntaxException {
         getRickRolled();
-        createdBy.setText("Lmao, you got rickrolled " + rickRollCounter + " time" + (rickRollCounter == 1 ? "" : "s"));
+        createdBy.setText("Lmao, you got rickrolled " + rickRollCounter + " time" + (rickRollCounter == 1 ? "" : "s")); // If rickRollCounter == 1, don't add an "s" at the end
         createdBy.setAlignment(Pos.CENTER_RIGHT);
     }
 
 
     private void getRickRolled() throws URISyntaxException, IOException{
-        Desktop.getDesktop().browse(new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+        Desktop.getDesktop().browse(new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ")); // Rickroll link
         rickRollCounter++;
     }
 

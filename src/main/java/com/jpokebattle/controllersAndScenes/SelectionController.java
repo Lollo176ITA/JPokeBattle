@@ -7,10 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class SelectionController {
@@ -44,11 +47,25 @@ public class SelectionController {
 
     private ImageView selectedTrainer;
     private ImageView selectedPokeball;
+    Image maleGif, femaleGif, male, female;
 
     @FXML
-    private void initialize() {
-        selectedTrainer = null;
-        selectedPokeball = null;
+    private void initialize() throws FileNotFoundException {
+        maleGif = new Image(new FileInputStream("src/main/resources/images/userTrainers/male.gif"));
+        femaleGif = new Image(new FileInputStream("src/main/resources/images/userTrainers/female.gif"));
+        female = new Image(new FileInputStream("src/main/resources/images/userTrainers/female.png"));
+        male = new Image(new FileInputStream("src/main/resources/images/userTrainers/male.png"));
+        maleTrainer.setImage(male);
+        femaleTrainer.setImage(female);
+
+//        maleTrainer.setFitHeight(150);
+//        maleTrainer.setFitWidth(150);
+//
+//        femaleTrainer.setFitHeight(150);
+//        femaleTrainer.setFitWidth(150);
+//
+//        selectedTrainer = null;
+//        selectedPokeball = null;
 
     }
 
@@ -56,9 +73,24 @@ public class SelectionController {
     private void handleTrainerSelection(MouseEvent event) {
         if (selectedTrainer != null) {
             selectedTrainer.setStyle("");
+            // Revert the image to static PNG when deselecting
+            if (selectedTrainer == maleTrainer) {
+                selectedTrainer.setImage(male);
+            } else if (selectedTrainer == femaleTrainer) {
+                selectedTrainer.setImage(female);
+            }
         }
         selectedTrainer = (ImageView) event.getSource();
-        selectedTrainer.setStyle("-fx-effect: dropshadow(gaussian, blue, 10, 0, 0, 0);");
+        //selectedTrainer.setStyle("-fx-effect: dropshadow(gaussian, blue, 10, 0, 0, 0);");
+
+        // Change the image to GIF when selected
+        if (selectedTrainer == maleTrainer) {
+            selectedTrainer.setImage(maleGif);
+            selectedTrainer.setStyle("-fx-effect: dropshadow(gaussian, darkblue, 20, 0, 0, 0);");
+        } else if (selectedTrainer == femaleTrainer) {
+            selectedTrainer.setImage(femaleGif);
+            selectedTrainer.setStyle("-fx-effect: dropshadow(gaussian, hotpink, 20, 0, 0, 0);");
+        }
     }
 
     @FXML

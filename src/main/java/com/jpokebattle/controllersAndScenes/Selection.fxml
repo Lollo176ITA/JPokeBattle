@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.jpokebattle.controllersAndScenes.SelectionController">
    <children>
-      <Label alignment="CENTER" layoutX="277.0" layoutY="14.0" text="Nome" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="277.0" layoutY="14.0" text=" Name" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman" size="35.0" />
          </font>
@@ -20,22 +20,14 @@
             <Font size="33.0" />
          </font>
       </TextField>
-      <Label alignment="CENTER" layoutX="270.0" layoutY="125.0" text="Genere" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="270.0" layoutY="125.0" text="Gender" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman" size="35.0" />
          </font>
       </Label>
-      <ImageView fx:id="maleTrainer" fitHeight="150.0" fitWidth="123.0" layoutX="144.0" layoutY="176.0" onMouseClicked="#handleTrainerSelection" pickOnBounds="true">
-         <image>
-            <Image url="@../../../../resources/gif/pokemon-front/alakazam.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="femaleTrainer" fitHeight="150.0" fitWidth="123.0" layoutX="373.0" layoutY="176.0" onMouseClicked="#handleTrainerSelection" pickOnBounds="true">
-         <image>
-            <Image url="@../../../../resources/gif/pokemon-front/arcanine.gif" />
-         </image>
-      </ImageView>
-      <Label alignment="CENTER" layoutX="194.0" layoutY="345.0" text="Pokeball Preferita" textAlignment="CENTER">
+      <ImageView fx:id="maleTrainer" fitHeight="150.0" fitWidth="150.0" layoutX="118.0" layoutY="171.0" onMouseClicked="#handleTrainerSelection" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="femaleTrainer" fitHeight="150.0" fitWidth="150.0" layoutX="377.0" layoutY="170.0" onMouseClicked="#handleTrainerSelection" pickOnBounds="true" preserveRatio="true" />
+      <Label alignment="CENTER" layoutX="194.0" layoutY="345.0" text="Favorite Pokeball" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman" size="35.0" />
          </font>

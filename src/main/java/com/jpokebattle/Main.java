@@ -31,7 +31,7 @@ public class Main extends Application {
 
             stage.setScene(scene);
             stage.show();
-            stage.setResizable(false);
+            stage.setResizable(false); //Non permette di ridimensionare la finestra per ora (potrebbe essere utile in futuro)
             stage.setTitle("PokeBattle");
 
 
@@ -48,13 +48,13 @@ public class Main extends Application {
     public void logout(Stage stage){
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Uscita dal gioco");
-        alert.setHeaderText("Sei sicuro di voler uscire?");
-        alert.setContentText("Potresti pentirtene amaramente");
+        alert.setTitle("Exit PokeBattle");
+        alert.setHeaderText("Are you sure to exit?"); //Chiede all'utente se è sicuro di voler uscire dal gioco (per evitare chiusure accidentali)
+        alert.setContentText("Potresti pentirtene amaramente"); //Easter egg per chi ha giocato a Pokemon Rosso/Blu su GameBoy Advance (2003) e ha scelto di non salvare il gioco prima di sfidare il Team Rocket al Monte Argento (e poi ha perso) :D (per chi non lo sapesse, il gioco si bloccava e non era possibile proseguire)
 
-        if (alert.showAndWait().get() == ButtonType.OK){ //Se l'utente preme OK
+        if (alert.showAndWait().get() == ButtonType.OK){
             //System.out.println("Sei uscito dal gioco."); //DEBUG
-            stage.close(); //Chiude la finestra
+            stage.close();
         }
     }
 
