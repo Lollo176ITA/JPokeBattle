@@ -9,7 +9,6 @@ import javafx.scene.image.*;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
-import java.io.InputStream;
 
 
 /**
@@ -22,19 +21,13 @@ public class Main extends Application {
 
         try {
 
-            // Carica l'icona dell'applicazione
-            InputStream stream = new FileInputStream("src/main/resources/images/icon.jpg"); // Carica l'icona dell'applicazione
-            Image icon = new Image(stream);
+            // Set the icon of the stage
+            stage.getIcons().add(new Image(new FileInputStream("src/main/resources/images/icon.jpg")));
 
-            // Verifica se l'icona è caricata correttamente
-            if (icon.isError()) {
-                System.out.println("Errore nel caricamento dell'icona.");
-            } else {
-                stage.getIcons().add(icon);
-            }
 
-            Parent root = FXMLLoader.load(getClass().getResource("controllersAndScenes/SchermataSelezione.fxml"));
-            Scene scene = new Scene(root);
+            Parent root = FXMLLoader.load(getClass().getResource("controllersAndScenes/Start.fxml"));
+            Scene scene = new Scene(root, 640, 480); //4:3 ratio
+
 
             stage.setScene(scene);
             stage.show();
@@ -57,7 +50,7 @@ public class Main extends Application {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Uscita dal gioco");
         alert.setHeaderText("Sei sicuro di voler uscire?");
-        alert.setContentText("I tuoi progressi non verranno salvati.");
+        alert.setContentText("Potresti pentirtene amaramente");
 
         if (alert.showAndWait().get() == ButtonType.OK){ //Se l'utente preme OK
             //System.out.println("Sei uscito dal gioco."); //DEBUG

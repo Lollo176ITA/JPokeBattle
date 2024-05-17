@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SchermataSelezioneController {
+public class SelectionController {
 
     @FXML
     private TextField nameField;
