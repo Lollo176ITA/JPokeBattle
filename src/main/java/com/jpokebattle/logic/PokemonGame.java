@@ -21,7 +21,7 @@ public class PokemonGame {
     }
 
     private void createPlayerTeam() {
-        List<ConfiguredPokemon> team = new ArrayList<>();
+        List<ConfiguredPokemon> team = new ArrayList<>(); //TODO: cambia arraylist
         System.out.println("Crea la tua squadra di Pokémon. Seleziona fino a 6 Pokémon.");
         for (int i = 0; i < 6; i++) {
             System.out.print("Inserisci il nome del Pokémon (lascia vuoto per terminare): ");
@@ -50,7 +50,7 @@ public class PokemonGame {
 
             if (player.hasActivePokemon()) {
                 System.out.println("Hai vinto la battaglia!");
-                level++;
+                level++; //Per ora il livello è una bufala
             } else {
                 System.out.println("Hai perso la battaglia.");
             }

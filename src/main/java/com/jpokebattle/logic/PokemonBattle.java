@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class PokemonBattle {
     private Player player;
-    private ConfiguredPokemon opponent;
+    private ConfiguredPokemon opponent; //Affrontando singoli avversari sarà più facile invertarmi una botness adeguata
     private Random random = new Random();
 
     public PokemonBattle(Player player, ConfiguredPokemon opponent) {
@@ -34,17 +34,24 @@ public class PokemonBattle {
     private void playerTurn() {
         ConfiguredPokemon activePokemon = player.getActivePokemon();
         Move selectedMove = player.chooseMove();
-        executeTurn(activePokemon, opponent, selectedMove);
+        executeTurn(activePokemon, opponent, selectedMove,true);
     }
 
     private void botTurn() {
         Move selectedMove = opponent.getMoves().get(random.nextInt(opponent.getMoves().size()));
-        executeTurn(opponent, player.getActivePokemon(), selectedMove);
+        executeTurn(opponent, player.getActivePokemon(), selectedMove, false);
     }
+    //TODO: invece di executeTurn devo usare attack della classe ConfiguredPokemon.java inoltre così non riconosco bene quale sia il mio pokemon
+    //Così entrambi usano la stessa mossa, ops... Possibile soluzione: usando una variabile boolean tengo traccia se sta attaccando il bot o il player
+    private void executeTurn(ConfiguredPokemon attacker, ConfiguredPokemon defender, Move move, Boolean player) {
+        System.out.println((player == true ? "Il tuo " : "Avversario ") + attacker.getName() + " usa " + move.getName() + "!");
 
-    private void executeTurn(ConfiguredPokemon attacker, ConfiguredPokemon defender, Move move) {
-        System.out.println(attacker.getName() + " usa " + move.getName() + "!");
+        if (attacker == null || defender == null) return; //Per evitare errori in esecuzione (spero)
 
+        //TODO: sleep lollo and then "smettila di scrivere in inglese"
+
+        //Gotta redo the all fucking logic
+        /*
         if (attacker.getBaseSpeed() > defender.getBaseSpeed()) {
             int damage = calculateDamage(attacker, defender, move);
             defender.receiveDamage(damage);
@@ -65,11 +72,13 @@ public class PokemonBattle {
                 defender.receiveDamage(damage);
                 System.out.println(defender.getName() + " ha subito " + damage + " danni. Vita rimanente: " + defender.getCurrentHealth());
             }
-        }
+
+         */
+
     }
 
     private int calculateDamage(ConfiguredPokemon attacker, ConfiguredPokemon defender, Move move) {
-        double effectiveness = move.getType().getEffectivenessAgainst(defender.getType());
+        double effectiveness = move.getType().getEffectivenessAgainst(defender.getType()); //In realtà sapere il tipo dell'attaccante non mi da alcuna informazione sul tipo di mossa
         return (int) (move.getPower() * effectiveness);
     }
 }

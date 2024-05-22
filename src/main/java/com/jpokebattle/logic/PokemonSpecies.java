@@ -24,6 +24,10 @@ public class PokemonSpecies {
     }
 
 
+
+
+    //Getters e Setters
+
     public String getName() {
         return name;
     }

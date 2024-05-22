@@ -1,4 +1,7 @@
 package main.java.com.jpokebattle.logic;
+
+
+//Best Bot ever!!!!
 public class Bot {
     private ConfiguredPokemon pokemon;
 

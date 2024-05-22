@@ -23,9 +23,11 @@ public class Move {
             int damage = (int) (power * effectiveness);
             target.receiveDamage(damage);
         } else {
-            // Implementa gli effetti delle mosse non dannose (es. abbassare le statistiche)
+            //TODO: implementa gli effetti delle mosse non dannose
         }
     }
+
+    // Getters e setters
 
     public String getName() {
         return name;
@@ -74,5 +76,5 @@ public class Move {
     public void setDamaging(boolean damaging) {
         isDamaging = damaging;
     }
-    // Getters e setters
+
 }

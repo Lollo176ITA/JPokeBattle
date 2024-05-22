@@ -26,12 +26,12 @@ public abstract class Pokemon {
         this.level = level;
         this.currentHealth = calculateMaxHealth();
     }
-
+    //TODO: togli sti ca**o di getters e setters perchè è una classe astratta (ca*zo)
     protected int calculateMaxHealth() {
-        return baseHealth + (level * 5);  // Formula semplificata
+        return baseHealth + (level * 5);  // Formula buttata li
     }
 
-    public void levelUp() {
+    public void levelUp() { // Da implementare
         level++;
         currentHealth = calculateMaxHealth();
     }

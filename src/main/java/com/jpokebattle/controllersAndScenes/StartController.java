@@ -107,7 +107,8 @@ public class StartController {
     // The following methods are used to handle the progress bar
     private void startProgressBar() {
         progressBarTimeline = new Timeline(
-                new KeyFrame(Duration.seconds(0.005), e -> updateProgress()) // Update progress every 0.005 seconds (200 times per second) to make the progress bar look smooth
+                new KeyFrame(Duration.seconds(0.005
+                ), e -> updateProgress()) // Update progress every 0.005 seconds (200 times per second) to make the progress bar look smooth
         );
         progressBarTimeline.setCycleCount(Timeline.INDEFINITE);
         progressBarTimeline.play();
